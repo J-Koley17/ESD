@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHEX Community - Holistic Wellness</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --healthex-p1: #f6d5ff;
+            --healthex-p2: #00c134;
+            --healthex-light: #f8f9fa;
+        }
+        .healthex-logo {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .healthex-logo .main {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--healthex-p2);
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .healthex-logo .tagline {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--healthex-p1);
+            letter-spacing: 1px;
+            margin-top: -8px;
+        }
+        .hero-banner {
+            background: linear-gradient(rgba(16, 12, 17, 0.7), rgba(17, 5, 18, 0.7)), 
+                        url('https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&w=1200');
+            background-size: cover;
+            height: 100vh;
+        }
+        .indian-feature-card {
+            border-left: 4px solid var(--healthex-p2);
+            transition: transform 0.3s;
+        }
+        .indian-feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--healthex-p2);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--healthex-p2);
+        }
+        .social-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        .social-login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Community Page Specific Styles */
+        .community-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dauto=format&fit=crop&w=1200');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        .community-card {
+            transition: all 0.3s;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 100%;
+        }
+        .community-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .community-card .card-img-top {
+            height: 180px;
+            object-fit: cover;
+        }
+        .community-card .members-count {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 193, 52, 0.85);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        .event-card {
+            border-left: 4px solid var(--healthex-p2);
+            border-radius: 0 12px 12px 0;
+            transition: all 0.3s;
+        }
+        .event-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .event-date {
+            background: var(--healthex-p2);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            width: 70px;
+        }
+        .forum-card {
+            transition: all 0.3s;
+            border-radius: 12px;
+            border: 1px solid #eaeaea;
+        }
+        .forum-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .forum-stats {
+            font-size: 0.85rem;
+            color: #6c757d;
+        }
+        .forum-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .discussion-item {
+            transition: all 0.3s;
+            border-radius: 8px;
+        }
+        .discussion-item:hover {
+            background-color: #f8f9fa;
+            transform: translateX(5px);
+        }
+        .post-count {
+            background: #f0f7ff;
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-weight: 600;
+        }
+        .new-post-btn {
+            position: fixed;
+            bottom: 100px;
+            right: 100px;
+            z-index: 100;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Floating Chatbot Styles */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 300px;
+            max-height: 400px;
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            z-index: 9999;
+        }
+        .chatbot-header {
+            border-bottom: 1px solid #ddd;
+        }
+        .chatbot-body {
+            flex: 1;
+            overflow-y: auto;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+        }
+        .chatbot-footer {
+            border-top: 1px solid #ddd;
+        }
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            max-width: 80%;
+        }
+        .bot-message {
+            background: #e1e1f5;
+            align-self: flex-start;
+        }
+        .user-message {
+            background: #d8b2fa;
+            color: #fff;
+            align-self: flex-end;
+            margin-left: auto;
+        }       
+        .chatbot-toggle-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3f0075;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            z-index: 10000;
+        }
+        .chatbot-toggle-btn:hover {
+            background: #003f18;
+        }
+        #closeChatbot {
+            border: none;
+            font-size: 1.2rem;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b8b8b8;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <div class="healthex-logo">
+                    <img src="ESD 5-Photoroom.png" alt="HEALTHEX Logo" style="height: 80px; width: auto; margin-right: 5px; margin-left: 1px;">
+                    <span style="font-family: Monsterrat; font-size: 50px; color: #d8b2fa; font-weight: bold;">HEALTHEX</span>
+    </a>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html #problem">Problem</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html #solution">Solution</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#"><i class="fas fa-users me-1"></i>Community</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html #pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="btn btn-warning ms-2" href="index.html #signup">Register Now</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Community Hero Section -->
+    <section class="community-hero text-white">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h1 class="display-3 fw-bold mb-4">Welcome to HEALTHEX Community</h1>
+                    <p class="lead fs-4 mb-5">Connect, share, and grow with thousands of Indians on their wellness journey</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#groups" class="btn btn-light btn-lg px-4 py-2">Explore Groups</a>
+                        <a href="#events" class="btn btn-outline-light btn-lg px-4 py-2">View Events</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Groups Section -->
+    <section id="groups" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center section-title">Community Groups</h2>
+            <p class="text-center mb-5">Join groups that match your interests and wellness goals</p>
+            
+            <div class="row g-4">
+                <!-- Group 1 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card community-card shadow">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600" class="card-img-top" alt="Healthy Eating">
+                        <span class="members-count"><i class="fas fa-users me-1"></i>300 members</span>
+                        <div class="card-body">
+                            <h5 class="card-title">Healthy Eating Club</h5>
+                            <p class="card-text">Share recipes, meal plans and healthy eating tips with fellow food enthusiasts.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <span class="badge bg-success">Active</span>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#joinGroupModal">Join Group</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group 2 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card community-card shadow">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=600" class="card-img-top" alt="Yoga & Meditation">
+                        <span class="members-count"><i class="fas fa-users me-1"></i>100 members</span>
+                        <div class="card-body">
+                            <h5 class="card-title">Yoga & Meditation Circle</h5>
+                            <p class="card-text">Connect with yoga practitioners and meditation guides for mindfulness practices.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <span class="badge bg-success">Active</span>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#joinGroupModal">Join Group</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group 3 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card community-card shadow">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=600" class="card-img-top" alt="Digital Detox">
+                        <span class="members-count"><i class="fas fa-users me-1"></i>76 members</span>
+                        <div class="card-body">
+                            <h5 class="card-title">Digital Detox Warriors</h5>
+                            <p class="card-text">Strategies to reduce screen time and reclaim your focus in the digital age.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <span class="badge bg-success">Active</span>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#joinGroupModal">Join Group</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group 4 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card community-card shadow">
+                        <img src="https://images.unsplash.com/photo-1517963879433-6ad2b056d712?auto=format&fit=crop&w=600" class="card-img-top" alt="Fitness">
+                        <span class="members-count"><i class="fas fa-users me-1"></i>150 members</span>
+                        <div class="card-body">
+                            <h5 class="card-title">Fitness Enthusiasts</h5>
+                            <p class="card-text">Home workouts, gym routines, and fitness challenges for all levels.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <span class="badge bg-success">Active</span>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#joinGroupModal">Join Group</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group 5 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card community-card shadow">
+                        <img src="https://images.unsplash.com/photo-1532622785990-d2c36a76f5a6?auto=format&fit=crop&w=600" class="card-img-top" alt="Mental Health">
+                        <span class="members-count"><i class="fas fa-users me-1"></i>200 members</span>
+                        <div class="card-body">
+                            <h5 class="card-title">Mental Wellness Support</h5>
+                            <p class="card-text">Safe space for discussing mental health challenges and coping strategies.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <span class="badge bg-success">Active</span>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#joinGroupModal">Join Group</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Group 6 -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="card community-card shadow">
+                        <img src="https://images.unsplash.com/photo-1589169011402-8b2cbd1ee593?q=80&w=1221&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dauto=format&fit=crop&w=600" class="card-img-top" alt="Parents & Kids">
+                        <span class="members-count"><i class="fas fa-users me-1"></i>350 members</span>
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">Healthy Families</h5>
+                            <p class="card-text">For parents looking to build healthy habits for themselves and their children.</p>
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+                                <span class="badge bg-success">Active</span>
+                                <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#joinGroupModal">Join Group</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-primary px-4 py-2">View All Groups</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events & Workshops Section -->
+    <section id="events" class="py-5" style="background-color: #e6f7e9;">
+        <div class="container">
+            <h2 class="text-center section-title">Upcoming Events & Workshops</h2>
+            <p class="text-center mb-5">Join our live sessions and workshops for expert guidance</p>
+            
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="card event-card h-100">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="event-date me-4">
+                                    <div class="fw-bold fs-5">15</div>
+                                    <div>OCT</div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="card-title">Mindful Eating Workshop</h5>
+                                    <p class="card-text"><i class="far fa-clock me-2"></i>4:00 PM - 5:30 PM IST</p>
+                                    <p class="card-text"><i class="fas fa-video me-2"></i>Online via Zoom</p>
+                                    <p>Learn to develop a healthy relationship with food and overcome emotional eating.</p>
+                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#eventModal">Register Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card event-card h-100">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="event-date me-4">
+                                    <div class="fw-bold fs-5">18</div>
+                                    <div>OCT</div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="card-title">Digital Detox Challenge Kickoff</h5>
+                                    <p class="card-text"><i class="far fa-clock me-2"></i>6:00 PM - 7:00 PM IST</p>
+                                    <p class="card-text"><i class="fas fa-video me-2"></i>Online via HEALTHEX Platform</p>
+                                    <p>Start our 7-day digital detox challenge with expert guidance and community support.</p>
+                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#eventModal">Register Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card event-card h-100">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="event-date me-4">
+                                    <div class="fw-bold fs-5">22</div>
+                                    <div>OCT</div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="card-title">Yoga for Beginners</h5>
+                                    <p class="card-text"><i class="far fa-clock me-2"></i>7:00 AM - 8:00 AM IST</p>
+                                    <p class="card-text"><i class="fas fa-video me-2"></i>Online via YouTube Live</p>
+                                    <p>Start your yoga journey with this beginner-friendly session. No experience needed!</p>
+                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#eventModal">Register Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card event-card h-100">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="event-date me-4">
+                                    <div class="fw-bold fs-5">25</div>
+                                    <div>OCT</div>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="card-title">Nutrition for Busy Professionals</h5>
+                                    <p class="card-text"><i class="far fa-clock me-2"></i>1:00 PM - 2:00 PM IST</p>
+                                    <p class="card-text"><i class="fas fa-video me-2"></i>Online via HEALTHEX Platform</p>
+                                    <p>Learn quick, healthy meal prep strategies that fit into your busy schedule.</p>
+                                    <button class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#eventModal">Register Now</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-outline-success px-4 py-2">View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Discussion Forum Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="section-title">Discussion Forum</h2>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newTopicModal"><i class="fas fa-plus me-2"></i>New Topic</button>
+            </div>
+            
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Forum Categories -->
+                    <div class="card forum-card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 me-3">
+                                    <i class="fas fa-utensils fa-2x text-success"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1">Healthy Eating & Nutrition</h5>
+                                    <p class="mb-0 forum-stats">Discussion about diets, recipes and nutritional advice</p>
+                                </div>
+                                <div class="post-count">92 topics</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card forum-card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 me-3">
+                                    <i class="fas fa-running fa-2x text-primary"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1">Fitness & Exercise</h5>
+                                    <p class="mb-0 forum-stats">Share workout routines, progress and fitness tips</p>
+                                </div>
+                                <div class="post-count">34 topics</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card forum-card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 me-3">
+                                    <i class="fas fa-brain fa-2x text-info"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1">Mental Wellness</h5>
+                                    <p class="mb-0 forum-stats">Discuss stress management, mindfulness and emotional health</p>
+                                </div>
+                                <div class="post-count">41 topics</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card forum-card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0 me-3">
+                                    <i class="fas fa-mobile-alt fa-2x text-warning"></i>
+                                </div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1">Digital Wellness</h5>
+                                    <p class="mb-0 forum-stats">Strategies for managing screen time and digital addiction</p>
+                                </div>
+                                <div class="post-count">23 topics</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Discussions -->
+                    <div class="card mt-5">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Recent Discussions</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="discussion-item p-3 mb-3 border rounded">
+                                <div class="d-flex">
+                                    <img src="https://images.unsplash.com/photo-1729101143873-d80050bae219?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="user-avatar me-3" alt="User">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">Help with meal planning for weight loss</h6>
+                                        <p class="mb-1 text-muted small">Started by Priya Sharma • 2 hours ago</p>
+                                        <div class="d-flex align-items-center small">
+                                            <span class="me-3"><i class="far fa-comment me-1"></i>2 replies</span>
+                                            <span><i class="far fa-eye me-1"></i>4 views</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <span class="badge bg-light text-dark">Nutrition</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="discussion-item p-3 mb-3 border rounded">
+                                <div class="d-flex">
+                                    <img src="https://images.unsplash.com/photo-1464746133101-a2c3f88e0dd9?q=80&w=1143&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="user-avatar me-3" alt="User">
+                                    <div class="flex-grow-1">
+                                        <h6 class="mb-1">Best yoga routines for back pain?</h6>
+                                        <p class="mb-1 text-muted small">Started by Rajesh Kumar • 5 hours ago</p>
+                                        <div class="d-flex align-items-center small">
+                                            <span class="me-3"><i class="far fa-comment me-1"></i>3 replies</span>
+                                            <span><i class="far fa-eye me-1"></i>5 views</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex-shrink-0">
+                                        <span class="badge bg-light text-dark">Fitness</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                           
+                        </div>
+                        <div class="card-footer bg-white text-end">
+                            <a href="#" class="btn btn-sm btn-outline-primary">View All Discussions</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Community Stats Sidebar -->
+                <div class="col-lg-4">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Community Statistics</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between mb-3">
+                                <div>
+                                    <div class="fw-bold fs-4 text-success">1000</div>
+                                    <div class="small">Members</div>
+                                </div>
+                                <div>
+                                    <div class="fw-bold fs-4 text-primary">20</div>
+                                    <div class="small">Groups</div>
+                                </div>
+                                <div>
+                                    <div class="fw-bold fs-4 text-start">294</div>
+                                    <div class="small">Discussions</div>
+                                </div>
+                            </div>
+                            <div class="progress mb-3" style="height: 8px;">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 53%;" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <p class="small mb-0">53% of members are active weekly</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Top Contributors</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://images.unsplash.com/photo-1659352153329-224d7d90163e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="user-avatar me-3" alt="User">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0">Meera Desai</h6>
+                                    <p class="mb-0 small text-muted">Nutrition Expert</p>
+                                </div>
+                                <span class="badge bg-success">389 pts</span>
+                            </div>
+                            
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://images.unsplash.com/photo-1591311630200-ffa9120a540f?q=80&w=1110&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="user-avatar me-3" alt="User">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0">Arjun Reddy</h6>
+                                    <p class="mb-0 small text-muted">Fitness Coach</p>
+                                </div>
+                                <span class="badge bg-success">192 pts</span>
+                            </div>
+                            
+                            <div class="d-flex align-items-center mb-3">
+                                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=799&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="user-avatar me-3" alt="User">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0">Priyanka Sharma</h6>
+                                    <p class="mb-0 small text-muted">Mental Wellness Advocate</p>
+                                </div>
+                                <span class="badge bg-success">169 pts</span>
+                            </div>
+                            
+                            <div class="d-flex align-items-center">
+                                <img src="https://images.unsplash.com/photo-1602909876203-191cd2ceedee?q=80&w=1267&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="user-avatar me-3" alt="User">
+                                <div class="flex-grow-1">
+                                    <h6 class="mb-0">Rahul Verma</h6>
+                                    <p class="mb-0 small text-muted">Digital Wellness Specialist</p>
+                                </div>
+                                <span class="badge bg-success">72 pts</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-white">
+                            <h5 class="mb-0">Community Guidelines</h5>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item small border-0 px-0 py-2"><i class="fas fa-check-circle text-success me-2"></i>Be respectful to all members</li>
+                                <li class="list-group-item small border-0 px-0 py-2"><i class="fas fa-check-circle text-success me-2"></i>Share evidence-based information</li>
+                                <li class="list-group-item small border-0 px-0 py-2"><i class="fas fa-check-circle text-success me-2"></i>Respect privacy and confidentiality</li>
+                                <li class="list-group-item small border-0 px-0 py-2"><i class="fas fa-check-circle text-success me-2"></i>No spam or self-promotion</li>
+                                <li class="list-group-item small border-0 px-0 py-2"><i class="fas fa-check-circle text-success me-2"></i>Report inappropriate content</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Join Group Modal -->
+    <div class="modal fade" id="joinGroupModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Join Community Group</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You're about to join the <span class="fw-bold" id="groupName">Healthy Eating Club</span> group.</p>
+                    <p>As a member, you'll be able to:</p>
+                    <ul>
+                        <li>Participate in group discussions</li>
+                        <li>Attend exclusive group events</li>
+                        <li>Share content with the group</li>
+                        <li>Connect with other members</li>
+                    </ul>
+                    <div class="form-check mt-3">
+                        <input class="form-check-input" type="checkbox" id="groupNotifications">
+                        <label class="form-check-label" for="groupNotifications">
+                            Receive notifications for new group activities
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Join Group</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Event Registration Modal -->
+    <div class="modal fade" id="eventModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Register for Event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 id="eventTitle">Mindful Eating Workshop</h6>
+                    <p class="text-muted small mb-3"><i class="far fa-clock me-1"></i>October 15, 4:00 PM - 5:30 PM IST</p>
+                    
+                    <form>
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="fullName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">How did you hear about this event?</label>
+                            <select class="form-select">
+                                <option selected>Select an option</option>
+                                <option>HEALTHEX Website</option>
+                                <option>Email Newsletter</option>
+                                <option>Social Media</option>
+                                <option>Friend/Colleague</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="eventUpdates">
+                            <label class="form-check-label" for="eventUpdates">
+                                Notify me about similar future events
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-success">Register Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- New Topic Modal -->
+    <div class="modal fade" id="newTopicModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Start New Discussion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="topicTitle" class="form-label">Topic Title</label>
+                            <input type="text" class="form-control" id="topicTitle" placeholder="Enter a clear and descriptive title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="topicCategory" class="form-label">Category</label>
+                            <select class="form-select" id="topicCategory">
+                                <option selected>Select a category</option>
+                                <option>Healthy Eating & Nutrition</option>
+                                <option>Fitness & Exercise</option>
+                                <option>Mental Wellness</option>
+                                <option>Digital Wellness</option>
+                                <option>General Wellness</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="topicContent" class="form-label">Discussion Content</label>
+                            <textarea class="form-control" id="topicContent" rows="6" placeholder="Share your thoughts, questions, or experiences..."></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Tags (optional)</label>
+                            <input type="text" class="form-control" placeholder="Add relevant tags separated by commas">
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="notifyMe">
+                            <label class="form-check-label" for="notifyMe">
+                                Notify me when someone replies
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Post Discussion</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="healthex-logo mb-4">
+                        <img src="ESD 5-Photoroom.png" alt="HEALTHEX Logo" style="max-width: 75px; height: auto;">
+                        <div class="main" style="font-size: 2.2rem; color: #d8b2fa; font-family: Monsterrat;">HEALTHEX</div>
+                        <div class="tagline" style="font-size: 1rem; color: #c6ffd4">REVIVE, RECHARGE, RECONNECT</div>
+                    </div>
+                    <p>Empowering Indians to overcome fast food addiction and digital overload through accessible, culturally-relevant solutions.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index2.html" class="text-white text-decoration-none">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Features</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Community</a></li>
+                        <li class="mb-2"><a href="blog.html" class="text-white text-decoration-none">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 class="mb-4">Community</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Groups</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Events</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Forum</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>support@healthex.in</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>+91 98765 43210</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Kolkata, West Bengal</li>
+                        <li class="mb-2"><i class="fas fa-headset me-2"></i>Community Support</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-5 bg-light">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2023 HEALTHEX. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p>Revive, Recharge, Reconnect</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Chatbot -->
+    <div id="chatbotWidget" class="chatbot-widget">
+        <div class="chatbot-header bg-dark text-white d-flex justify-content-between align-items-center px-3 py-2">
+            <span>HEALTHEX AI</span>
+            <button id="closeChatbot" class="btn btn-sm btn-outline-light">&times;</button>
+        </div>
+        <div class="chatbot-body p-3" id="chatbotBody">
+            <div class="chat-message bot-message">
+                👋 Hi! I’m your HEALTHEX community assistant. How can I help you today?
+            </div>
+            <div class="chat-message bot-message">
+                I can help you find groups, events, or answer questions about our community!
+            </div>
+        </div>
+        <div class="chatbot-footer p-2">
+            <div class="input-group">
+                <input type="text" id="userInput" class="form-control" placeholder="Type your question...">
+                <button id="sendBtn" class="btn btn-dark">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Button -->
+    <button id="toggleChatbot" class="chatbot-toggle-btn">
+        <i class="fas fa-comment-dots"></i>
+    </button>
+
+    <!-- New Post Button -->
+    <button class="new-post-btn btn btn-primary d-none d-lg-block">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Chatbot functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.getElementById('toggleChatbot');
+            const chatbotWidget = document.getElementById('chatbotWidget');
+            const closeBtn = document.getElementById('closeChatbot');
+            const sendBtn = document.getElementById('sendBtn');
+            const userInput = document.getElementById('userInput');
+            const chatbotBody = document.getElementById('chatbotBody');
+
+            toggleBtn.addEventListener('click', function() {
+                chatbotWidget.style.display = 'flex';
+                toggleBtn.style.display = 'none';
+            });
+            
+            closeBtn.addEventListener('click', function() {
+                chatbotWidget.style.display = 'none';
+                toggleBtn.style.display = 'block';
+            });
+            
+            sendBtn.addEventListener('click', sendMessage);
+            userInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') sendMessage();
+            });
+            
+            function sendMessage() {
+                const message = userInput.value.trim();
+                if (message === '') return;
+                
+                // Add user message
+                addMessage(message, 'user-message');
+                userInput.value = '';
+                
+                // Simulate bot thinking
+                setTimeout(() => {
+                    const response = getBotResponse(message);
+                    addMessage(response, 'bot-message');
+                }, 800);
+            }
+            
+            function addMessage(text, className) {
+                const msgDiv = document.createElement('div');
+                msgDiv.className = 'chat-message ' + className;
+                msgDiv.textContent = text;
+                chatbotBody.appendChild(msgDiv);
+                chatbotBody.scrollTop = chatbotBody.scrollHeight;
+            }
+            
+            function getBotResponse(msg) {
+                msg = msg.toLowerCase();
+                
+                if (msg.includes('group') || msg.includes('community')) {
+                    return 'We have groups for Healthy Eating, Yoga, Digital Detox and more! Which topic interests you?';
+                } 
+                else if (msg.includes('event') || msg.includes('workshop')) {
+                    return 'Upcoming events include Mindful Eating Workshop (Oct 15) and Digital Detox Challenge (Oct 18). Would you like details?';
+                }
+                else if (msg.includes('forum') || msg.includes('discussion')) {
+                    return 'Our forum has categories for Nutrition, Fitness, Mental Health and Digital Wellness. You can browse or start a new topic!';
+                }
+                else if (msg.includes('help') || msg.includes('support')) {
+                    return 'How can I assist? I can help you find groups, events, or navigate our community features.';
+                }
+                else {
+                    return 'I\'m here to help with community-related questions! Try asking about groups, events, or forum discussions.';
+                }
+            }
+            
+            // Update group name in modal
+            const joinButtons = document.querySelectorAll('[data-bs-target="#joinGroupModal"]');
+            joinButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const groupName = this.closest('.card').querySelector('.card-title').textContent;
+                    document.getElementById('groupName').textContent = groupName;
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEALTHEX - Resources Hub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --healthex-p1: #f6d5ff;
+            --healthex-p2: #00c134;
+            --healthex-light: #f8f9fa;
+            --healthex-dark: #1c0a21;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #faf9ff;
+            color: #333;
+        }
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        .healthex-logo {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .healthex-logo .main {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--healthex-p2);
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .healthex-logo .tagline {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--healthex-p1);
+            letter-spacing: 1px;
+            margin-top: -8px;
+        }
+        /* Hero Section */
+        .resources-hero {
+            background: linear-gradient(rgba(26, 20, 28, 0.7), rgba(20, 6, 21, 0.7)), 
+                        url('https://images.unsplash.com/photo-1493770348161-369560ae357d?auto=format&fit=crop&w=1200');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 0 80px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resources-hero:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, #faf9ff, transparent);
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        /* Search & Filter */
+        .search-section {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            margin-top: -60px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            height: 55px;
+            border-radius: 50px;
+            padding-left: 25px;
+            border: 2px solid #e9ecef;
+            font-size: 1.1rem;
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+            height: 45px;
+            width: 45px;
+            border-radius: 50%;
+            background: var(--healthex-p2);
+            color: white;
+            border: none;
+        }
+        
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .filter-tag {
+            background: #f0f0f0;
+            border-radius: 50px;
+            padding: 8px 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-tag:hover, .filter-tag.active {
+            background: var(--healthex-p2);
+            color: white;
+        }
+        
+        /* Blog Content */
+        .blog-section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            color: var(--healthex-dark);
+            text-align: center;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--healthex-p2);
+            border-radius: 10px;
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+            transition: all 0.3s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        
+        .card-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        .card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        .card-img1 {
+            height: 435px;
+            overflow: hidden;
+        }
+        .card-img1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        .blog-card:hover .card-img img {
+            transform: scale(1.05);
+        }
+        
+        .card-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-category {
+            display: inline-block;
+            background: var(--healthex-p1);
+            color: var(--healthex-dark);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 5px 15px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--healthex-dark);
+        }
+        
+        .card-excerpt {
+            color: #666;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        
+        .card-meta {
+            display: flex;
+            align-items: center;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
+        }
+        
+        .card-meta i {
+            margin-right: 5px;
+            color: var(--healthex-p2);
+        }
+        
+        .read-more {
+            color: var(--healthex-p2);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .read-more i {
+            margin-left: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Featured Article */
+        .featured-article {
+            background: linear-gradient(135deg, #eecfff, #e0f7e9);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .featured-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-badge {
+            background: var(--healthex-p2);
+            color: white;
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .featured-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--healthex-dark);
+        }
+        
+        .featured-excerpt {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #2f2f2f;
+        }
+        
+        /* Categories Section */
+        .categories-section {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #faf9ff, #f0f0ff);
+        }
+        
+        .category-card {
+            background: rgb(253, 227, 255);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            color: var(--healthex-p2);
+            margin-bottom: 20px;
+        }
+        
+        .category-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--healthex-dark);
+        }
+        
+        .category-count {
+            display: inline-block;
+            background: var(--healthex-p2);
+            color: var(--healthex-light);
+            padding: 3px 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Newsletter */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--healthex-dark), #3a0a4a);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            max-width: 600px;
+            margin: 40px auto 0;
+        }
+        
+        .newsletter-form .form-control {
+            height: 55px;
+            border-radius: 50px;
+            padding: 0 25px;
+            font-size: 1.1rem;
+            border: none;
+        }
+        
+        .newsletter-form .btn {
+            border-radius: 50px;
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: var(--healthex-p2);
+            border: none;
+            
+            height: 55px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .featured-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .featured-content {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <div class="healthex-logo">
+                    <img src="ESD 5-Photoroom.png" alt="HEALTHEX Logo" style="height: 80px; width: auto; margin-right: 5px; margin-left: 1px;">
+                    <span style="font-family: Monsterrat; font-size: 50px; color: #d8b2fa; font-weight: bold;">HEALTHEX</span>
+    </a>
+                </div>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html #solutions">Solutions</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#resources">Resources</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html #pricing">Pricing</a></li>
+                    <li class="nav-item"><a class="btn btn-outline-light ms-2" href="index.html #signup"><i class="fas fa-user me-2"></i>Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="resources-hero">
+        <div class="container text-center">
+            <h1 class="hero-title">HEALTHEX Knowledge Hub</h1>
+            <p class="hero-subtitle">Discover expert articles, practical guides, and actionable tips to help you build healthy habits, improve mental wellness, and achieve holistic health.</p>
+            <a href="#resources" class="btn btn-outline-light btn-lg px-5 py-3">Explore Resources</a>
+        </div>
+    </section>
+
+    <!-- Search & Filter -->
+    <div class="container">
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="form-control" placeholder="Search for articles, recipes, or guides...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="filter-tags">
+                <div class="filter-tag active">All</div>
+                <div class="filter-tag">Healthy Habits</div>
+                <div class="filter-tag">Mental Wellness</div>
+                <div class="filter-tag">Nutrition</div>
+                <div class="filter-tag">Recipes</div>
+                <div class="filter-tag">Fitness</div>
+                <div class="filter-tag">Digital Detox</div>
+                <div class="filter-tag">Mindfulness</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="resources">
+        <div class="container">
+            <h2 class="section-title">Latest Articles & Guides</h2>
+            
+            <!-- Featured Article -->
+            <div class="featured-article">
+                <div class="row g-0">
+                    <div class="col-md-6">
+                        <div class="card-img1">
+                            <img src="featured.jpg" alt="Mindful Eating">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="featured-content">
+                            <span class="featured-badge">FEATURED ARTICLE</span>
+                            <h3 class="featured-title">The Art of Mindful Eating: Transform Your Relationship with Food</h3>
+                            <p class="featured-excerpt">Discover how mindful eating can help you break free from junk food addiction, improve digestion, and develop a healthier relationship with food. Learn practical techniques you can start using today.</p>
+                            <a href="#" class="btn btn-lg btn-dark px-4">Read Full Article <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Blog Grid -->
+            <div class="blog-grid">
+                <!-- Card 1 -->
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1535914254981-b5012eebbd15?auto=format&fit=crop&w=800" alt="Digital Detox">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">Digital Wellness</span>
+                        <h4 class="card-title">7-Day Digital Detox Challenge: Reclaim Your Time</h4>
+                        <p class="card-excerpt">Step-by-step guide to reducing screen time and breaking digital addiction. Practical tips for creating healthier tech habits that stick.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> 8 min read</span>
+                            <span class="ms-3"><i class="far fa-calendar"></i> Jun 15, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=800" alt="Healthy Recipes">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">Recipes</span>
+                        <h4 class="card-title">10 Traditional Indian Recipes Made Healthy</h4>
+                        <p class="card-excerpt">Enjoy your favorite comfort foods with these nutritious twists on classic dishes. All recipes under 30 minutes!</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> 6 min read</span>
+                            <span class="ms-3"><i class="far fa-calendar"></i> May 28, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1623622674326-beac45d813f9?auto=format&fit=crop&w=800" alt="Mental Health">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">Mental Wellness</span>
+                        <h4 class="card-title">Understanding Anxiety: Signs, Symptoms & Coping Strategies</h4>
+                        <p class="card-excerpt">Recognize the signs of anxiety and learn evidence-based techniques to manage symptoms and improve your mental wellbeing.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> 10 min read</span>
+                            <span class="ms-3"><i class="far fa-calendar"></i> May 12, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800" alt="Workout Plans">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">Fitness</span>
+                        <h4 class="card-title">No Gym Required: 20-Minute Home Workout Plan</h4>
+                        <p class="card-excerpt">Effective full-body workout you can do anywhere. Perfect for busy schedules with minimal equipment needed.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> 5 min read</span>
+                            <span class="ms-3"><i class="far fa-calendar"></i> Apr 30, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1531353826977-0941b4779a1c?auto=format&fit=crop&w=800" alt="Sleep">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">Healthy Habits</span>
+                        <h4 class="card-title">The Science of Sleep: How to Improve Your Sleep Quality</h4>
+                        <p class="card-excerpt">Understand the importance of sleep and learn actionable tips to enhance your sleep quality and wake up refreshed.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> 9 min read</span>
+                            <span class="ms-3"><i class="far fa-calendar"></i> Apr 18, 2023</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="blog-card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bWVkaXRhdGlvbnxlbnwwfHwwfHx8MA%3D%3Dauto=format&fit=crop&w=800" alt="Meditation">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-category">Mindfulness</span>
+                        <h4 class="card-title">Meditation for Beginners: A Simple 5-Minute Daily Practice</h4>
+                        <p class="card-excerpt">Start your meditation journey with this easy guide. Reduce stress and increase focus with just 5 minutes a day.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <div class="card-meta">
+                            <span><i class="far fa-clock"></i> 7 min read</span>
+                            <span class="ms-3"><i class="far fa-calendar"></i> Apr 5, 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5">
+                <a href="#" class="btn btn-lg btn-outline-dark px-5">View All Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title">Browse by Category</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-apple-alt"></i>
+                        </div>
+                        <h3 class="category-title">Nutrition & Diet</h3>
+                        <p>Healthy eating guides, meal plans, and nutritional advice to fuel your body right.</p>
+                        <span class="category-count">24 Articles</span>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <h3 class="category-title">Mental Wellness</h3>
+                        <p>Strategies for stress management, emotional health, and psychological wellbeing.</p>
+                        <span class="category-count">18 Articles</span>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <h3 class="category-title">Fitness & Exercise</h3>
+                        <p>Workout plans, movement guides, and tips for staying active at any fitness level.</p>
+                        <span class="category-count">22 Articles</span>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3 class="category-title">Digital Wellness</h3>
+                        <p>Overcome tech addiction and create healthier relationships with digital devices.</p>
+                        <span class="category-count">15 Articles</span>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3 class="category-title">Healthy Habits</h3>
+                        <p>Build sustainable routines and break unhealthy patterns for long-term wellbeing.</p>
+                        <span class="category-count">27 Articles</span>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <h3 class="category-title">Recipes</h3>
+                        <p>Delicious, nutritious recipes that are quick to prepare and packed with flavor.</p>
+                        <span class="category-count">35 Articles</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="container">
+            <h2 class="section-title text-white">Stay Updated with Health Tips</h2>
+            <p class="lead mb-4">Join 50,000+ subscribers and get weekly wellness tips, exclusive content, and special offers</p>
+            
+            <div class="newsletter-form">
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" placeholder="Enter your email address">
+                    <button class="btn" type="button">Subscribe</button>
+                </div>
+                <p class="small">We respect your privacy. Unsubscribe at any time.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <div class="healthex-logo mb-4">
+                    <img src="ESD 5-Photoroom.png" alt="HEALTHEX Logo" style="max-width: 75px; height: auto;">
+                        <div class="main" style="font-size: 2.2rem; color: #d8b2fa; font-family: Monsterrat;">HEALTHEX</div>
+                        <div class="tagline" style="font-size: 1rem; color: #c6ffd4">REVIVE, RECHARGE, RECONNECT</div>
+                    </div>
+                    <p>Empowering Indians to overcome fast food addiction and digital overload through accessible, culturally-relevant solutions.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="text-white me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fab fa-twitter fa-lg"></i></a>
+                        <a href="#" class="text-white"><i class="fab fa-linkedin-in fa-lg"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h5 class="mb-4">Resources</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">All Articles</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Healthy Recipes</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Workout Plans</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Mental Wellness</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Digital Detox Guide</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="index.html" class="text-white text-decoration-none">About Us</a></li>
+                        <li class="mb-2"><a href="index.html #solution" class="text-white text-decoration-none">Our Mission</a></li>
+                        <li class="mb-2"><a href="index.html #team" class="text-white text-decoration-none">Team</a></li>
+                        <li class="mb-2"><a href="#" class="text-white text-decoration-none">Accessibility Resources</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-envelope me-2"></i>support@healthex.in</li>
+                        <li class="mb-2"><i class="fas fa-phone me-2"></i>+91 98765 43210</li>
+                        <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Kolkata, West Bengal</li>
+                        <li class="mb-2"><i class="fas fa-universal-access me-2"></i>Accessibility Support</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-5 bg-light">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p>&copy; 2023 HEALTHEX. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p>Revive, Recharge, Reconnect</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Filter tags functionality
+        document.querySelectorAll('.filter-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                // Remove active class from all tags
+                document.querySelectorAll('.filter-tag').forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked tag
+                this.classList.add('active');
+                
+                // In a real implementation, you would filter content here
+            });
+        });
+        
+        // Search functionality
+        document.querySelector('.search-box button').addEventListener('click', function() {
+            const searchTerm = document.querySelector('.search-box input').value;
+            if(searchTerm.trim() !== '') {
+                alert(`Searching for: ${searchTerm}`);
+                // In a real implementation, you would search content here
+            }
+        });
+        
+        // Press Enter to search
+        document.querySelector('.search-box input').addEventListener('keypress', function(e) {
+            if(e.key === 'Enter') {
+                document.querySelector('.search-box button').click();
+            }
+        });
+    </script>
+</body>
+</html>
